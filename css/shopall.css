@@ -1,0 +1,37 @@
+
+     .produkt_gruppe_div {
+      float: left;
+      width: 23%;
+      padding: 1%;
+      margin-bottom: 20px;
+      background: #FDFDFD;
+      border-top: 2px solid #EEE;
+      /* margin-right: 1.1%; */
+      position: relative;
+       z-index: 10 !important; 
+      -webkit-transition: all 0.5s ease-out;
+      -moz-transition: all 0.5s ease-out;
+      -o-transition: all 0.5s ease-out;
+      transition: all 0.5s ease-out;
+    } 
+    #sp{
+        display: grid;
+        width: 100%;
+        grid-template-columns: auto auto;
+    }
+        .a{
+            grid-row: 1;
+       padding: 10px;
+        width: 99;
+         /* border: 1px solid black; */
+         content: none;
+         /* background: rgb(12, 12, 12); */
+         color: rgb(11, 11, 11);
+         font-size: 16px;
+        }
+ 
+        .tensp{
+            padding-top: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
