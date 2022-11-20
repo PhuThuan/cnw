@@ -1,9 +1,8 @@
 <?php
-include 'connect.php';
 session_start();
+$user_id = $_SESSION['user'];
 
-
-
+include 'connect.php';
 
 
 ?>
@@ -29,12 +28,13 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
+
+
 </head>
 
 <body>
 
-    <?php include_once 'header.php';
-    ?>
+    <?php include_once 'header.php'; ?>
     <div style="height: 100px; width: 100px;">
 
 
@@ -46,7 +46,7 @@ session_start();
 
     <div class="container">
         <div class="row ">
-            <div class="col col-lg-2 locsp text-center " >
+            <div class="col col-lg-2 locsp text-center ">
 
                 <div style="float:left; position:relative;">
 
@@ -66,8 +66,11 @@ session_start();
                         <input type="checkbox" name="screen_group[]" value="400-500" id="400-500" class="cb" />&nbsp;<span class="filter_paragraphs">400-500</span>
                         <br />
                         <input type="checkbox" name="screen_group[]" value="500-600" id="500-600" class="cb" />&nbsp;<span class="filter_paragraphs">500-600</span> <br />
+
                         <input type="checkbox" name="screen_group[]" value="600-700" id="600-700" class="cb" />&nbsp;<span class="filter_paragraphs">600-700</span> <br />
+
                         <input type="checkbox" name="screen_group[]" value="700-800" id="700-800" class="cb" />&nbsp;<span class="filter_paragraphs">700-800</span> <br />
+
                         <input type="checkbox" name="screen_group[]" value="800-900" id="800-900" class="cb" />&nbsp;<span class="filter_paragraphs">800-900</span>
                         <br />
                         <br />
@@ -75,18 +78,10 @@ session_start();
                         <p class="margin_bottom_5"><b>Brands:</b>
 
                         </p>
-                        <input type="checkbox" name="brand_group[]" value="aokhoac" id="z00196" class="cb" />&nbsp;<span class="filter_paragraphs">Áo khoác</span>
-
                         <br />
-                        <input type="checkbox" name="brand_group[]" value="quandai" id="z05448" class="cb" />&nbsp;<span class="filter_paragraphs">Quần Dài</span>
-
+                        <input type="checkbox" name="brand_group2[]" value="discount" id="z00201" class="cb" />&nbsp;<span class="filter_paragraphs">Giảm Giá</span>
                         <br />
-                        <input type="checkbox" name="brand_group[]" value="aongan" id="z00201" class="cb" />&nbsp;<span class="filter_paragraphs">Áo Ngắn</span>
-
-                        <br />
-                        <input type="checkbox" name="brand_group[]" value="quanngan" class="cb" id="z00712" />&nbsp;<span class="filter_paragraphs">Quần Ngắn</span>
-
-
+                        <input type="checkbox" name="brand_group1[]" value="noibat" id="z00202" class="cb" />&nbsp;<span class="filter_paragraphs">nổi bật</span>
                         <br />
                         </p>
                     </div>
@@ -119,8 +114,8 @@ session_start();
       <h1 class="heading">latest products</h1>
 
       <div class="box-container"> -->
-      <?php include_once 'product2.php' ?>
-                       
+                        <?php include_once 'product5.php' ?>
+
 
                     </div>
 
@@ -142,7 +137,7 @@ session_start();
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <script src="js/index.js">
         </script>
-        <script src="js/shopall.js"></script>
+        <script src="js/bottoms.js"></script>
 
 </body>
 

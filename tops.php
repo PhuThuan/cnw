@@ -1,4 +1,5 @@
-<?php
+<?php include 'connect.php';
+session_start();
 
 
 ?>
@@ -77,10 +78,10 @@
 
 
                         <br />
-                        <input type="checkbox" name="brand_group[]" value="quanngan" id="z00196" class="cb" />&nbsp;<span class="filter_paragraphs">Quần Ngắn</span>
+                        <input type="checkbox" name="brand_group[]" value="aokhoac" id="z00196" class="cb" />&nbsp;<span class="filter_paragraphs">ÁO KHOÁC</span>
 
                         <br />
-                        <input type="checkbox" name="brand_group[]" value="quandai" id="z05448" class="cb" />&nbsp;<span class="filter_paragraphs">Quần Dài</span>
+                        <input type="checkbox" name="brand_group[]" value="aongan" id="z05448" class="cb" />&nbsp;<span class="filter_paragraphs">ÁO NGẮN</span>
 
                         <br />
                         <input type="checkbox" name="brand_group2[]" value="discount" id="z00201" class="cb" />&nbsp;<span class="filter_paragraphs">Giảm Giá</span>

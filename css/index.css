@@ -182,39 +182,61 @@ background: rgb(161, 139, 139);
 /*----------------------------------------footer------------------------------*/
 .foot {
 	border-top: 1em solid rgb(246, 244, 244);
-	background-color: rgb(231, 193, 193);
-	
+	position: relative;
+    height: fit-content;
  } 
 .hotline  {
   
-  	margin-bottom: 2em;
+  	margin-bottom: 2px;
 }
 .email {
-	margin-bottom: 2em;
+	margin-bottom: 2px;
 }
 .emailbusiness{
-	margin-top: 2em;
+	margin-top: 2px;
 }
 h4 {
-	margin-bottom: 2em;
+	margin-bottom: 2px;
 	color:  #a8a8a8;
 }
 .foot .col-md-2 {
-	margin: 0 4em;
-    width: 14.666667%;
+	margin: 0 4.1em;
+    width: 15%;
 	
 }
 .col-md-2 h3 {
 	margin-top: 1em;
 }
 .ft-icon i {
-	font-size: 1.5em;
-	margin-right: 0.7em;
+	font-size: 15px;
+	margin-right: 50px;
 }
 .sp h4 {
-	margin-top: 1em;
+	margin-top: 3px;
 }
 .sanpham {
  position: absolute ;
  margin-top: 50px;
+}
+
+/* registration */
+
+.registration{
+    padding-top: 50px;
+    
+}
+
+/* login */
+
+/* shopping-cart */
+
+.shopping-cart table thead th{
+    padding: 50px;
+}
+.shopping-cart table tbody tr td{
+    padding-left: 50px;;
+
+}
+.cart-btn{
+    padding: 20px;
 }

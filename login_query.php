@@ -17,7 +17,7 @@
 			if($row > 0) {
 				$_SESSION['user'] = $fetch['id'];
 				printf($_SESSION['user']);
-				header("location:cart.php");
+				header("location:index.php");
 			} else{
 				echo "
 				<script>alert('Invalid username or password')</script>

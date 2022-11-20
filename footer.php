@@ -8,45 +8,45 @@
       <div class="col-md-2 ">
         <h3>VỀ CHÚNG TÔi</h3>
         <p>Limerence</p>
-        <h4>mã số thuế: 000000000</h4>
-        <h4>ngày cấp: 00/00/0000</h4>
+        <h6>mã số thuế: 000000000</h6>
+        <h6>ngày cấp: 00/00/0000</h6>
     </div>
     <div class="col-md-2">
          <H3>Liên Hệ</H3>
          <div class="hotline">
           <p>Hotline</p>
-          <h4>1900 000 000</h4>
+          <h6>1900 000 000</h6>
          </div>
          <div class="email">
           <p>Email</p>
-          <h4>custommer@gmail.com</h4>
+          <h6>custommer@gmail.com</h6>
          </div>
          <div class="Time">
           <p>Mon - Sun</p>
-          <h4>09:30 - 21:30</h4>
+          <h6>09:30 - 21:30</h6>
 
          </div>
          <div class="emailbusiness">
           <p>Email Busiess</p>
-          <h4>business@gmail.com</h4>
+          <h6>business@gmail.com</h6>
          </div>
     </div>
     <div class="col-md-2">
       <h3>Hỗ Trợ</h3>
       <div class="sp">
-        <h4>Tài khoản</h4>
-        <h4>Chính sách vận chuyển</h4>
-        <h4>Thanh toán online</h4>
-        <h4>Chính sách bảo mật thông tin</h4>
-        <h4>Chính sách bảo hành</h4>
-        <h4>Chính sách khiếu nại</h4>
+        <h6>Tài khoản</h6>
+        <h6>Chính sách vận chuyển</h6>
+        <h6>Thanh toán online</h6>
+        <h6>Chính sách bảo mật thông tin</h6>
+        <h6>Chính sách bảo hành</h6>
+        <h6>Chính sách khiếu nại</h6>
       </div>
      
     </div>
     <div class="col-md-2">
     <h3>Mở Rộng</h3>
-     <h4>Tuyển dụng</h4>
-     <h4>Blog</h4>
+     <h6>Tuyển dụng</h6>
+     <h6>Blog</h6>
      <div class="ft-icon">
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-instagram"></i>

@@ -1,8 +1,8 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EASY</title>
@@ -24,33 +24,43 @@
 
 <body>
 <?php include_once"header.php"?>
-	<div class="col-md-12 text-center registration mx-auto"style="width: 50%;">
-		<div class="col-md-12" >
-			<form action="register_query.php" method="POST">
-				<h4 class="text-success ">ĐĂNG KÝ</h4 >
-				<hr style="border-top:1px groovy #000;">
-				<div class="form-group">
-					<label>Firstname</label>
-					<input type="text" class="form-control" name="firstname" />
+			<?php if (isset($_SESSION['message'])) : ?>
+				<div class="alert alert-<?php echo $_SESSION['message']['alert'] ?> msg"><?php echo $_SESSION['message']['text'] ?></div>
+				<script>
+					(function() {
+						// removing the message 3 seconds after the page load
+						setTimeout(function() {
+							document.querySelector('.msg').remove();
+						}, 3000)
+					})();
+				</script>
+			<?php
+			endif;
+			// clearing the message
+			unset($_SESSION['message']);
+			?>
+			<div class="col-md-12 text-center registration mx-auto" style="width: 50%;">
+				<div class="col-md-12">
+					<form action="login_query.php" method="POST">
+						<h4 class="text-success">ĐĂNG NHẬP</h4>
+						<hr style="border-top:1px groovy #000;">
+						<div class="form-group">
+							<label>Username</label>
+							<input type="text" class="form-control" name="username" />
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" name="password" />
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-primary form-control" name="login">Login</button>
+						</div>
+						<a href="registration.php">Registration</a>
+					</form>
 				</div>
-				<div class="form-group">
-					<label>Username</label>
-					<input type="text" class="form-control" name="username" />
-				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input type="password" class="form-control" name="password" />
-				</div>
-				<br />
-				<div class="form-group">
-					<button class="btn btn-primary form-control" name="register">Register</button>
-				</div>
-				<a href="login.php">Login</a>
-			</form>
-		</div>
-	</div>
-
-	<?php include_once 'footer.php'; ?>
+			</div>
+				<?php include_once"footer.php"?>
 </body>
 
 </html>

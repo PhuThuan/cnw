@@ -1,24 +1,13 @@
 <?php
-session_start();
-$user_id = $_SESSION['user'];
-
 include 'connect.php';
-if (isset($_POST['add_to_cart'])) {
 
-   $product_name = $_POST['sanpham_name'];
-   $product_price = $_POST['sanpham_price'];
-   $product_image = $_POST['sanpham_image'];
-   $product_quantity = $_POST['product_quantity'];
+session_start();
+$user_id = 0;
+if(isset($_SESSION['user'])){
+   $user_id = $_SESSION['user'];
+}
 
-   $select_cart =  $conn->query(" SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'");
 
-   if ($select_cart > 0) {
-      $message[] = 'product already added to cart!';
-   } else {
-      $conn->exec("INSERT INTO `cart`(user_id, name, price, image, quantity) VALUES('$user_id', '$product_name', '$product_price', '$product_image', '$product_quantity')");
-      $message[] = 'product added to cart!';
-   }
-};
 
 ?>
 
@@ -99,7 +88,7 @@ if (isset($_POST['add_to_cart'])) {
       </button>
    </div>
    <!-- banner -->
-   <div class="container text-center sanpham">
+   <div class="container text-center">
       <div class="row align-items-start">
          <div class="col-lg-4 ">
             <img src="img/2/block_home_category1_new.webp" class="d-block w-100 mx-auto" alt="...">
@@ -112,6 +101,7 @@ if (isset($_POST['add_to_cart'])) {
          </div>
       </div>
    </div>
+   
    <img src="img/show_block_home_category_image_3_new.webp" class=" d-block w-100 mx-auto" alt="...">
 
 
@@ -131,7 +121,7 @@ if (isset($_POST['add_to_cart'])) {
       <div class="box-container"> -->
          
           
-           <?php include_once'product.php'?>
+           <?php include_once 'product.php'?>
            
 
          </div>

@@ -6,23 +6,34 @@
 <?php require_once "connect.php"; ?>
 <?php
 
-$user_id = $_SESSION['user'];
-if (isset($_POST['add_to_cart'])) {
+$user_id = 0;
+if (isset($_SESSION['user'])) {
+   $user_id = $_SESSION['user'];
 
-   $product_name = $_POST['sanpham_name'];
-   $product_price = $_POST['sanpham_price'];
-   $product_image = $_POST['sanpham_image'];
-   $product_quantity = $_POST['product_quantity'];
+   if (isset($_POST['add_to_cart'])) {
 
-   $select_cart =  $conn->query(" SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'");
+      $product_name = $_POST['sanpham_name'];
+      $product_price = $_POST['sanpham_price'];
+      $product_image = $_POST['sanpham_image'];
+      $product_quantity = $_POST['product_quantity'];
 
-   if ($select_cart > 0) {
-      $message[] = 'product already added to cart!';
-   } else {
-      $conn->exec("INSERT INTO `cart`(user_id, name, price, image, quantity) VALUES('$user_id', '$product_name', '$product_price', '$product_image', '$product_quantity')");
-      $message[] = 'product added to cart!';
+      $select_cart =  $conn->query(" SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'");
+
+      if ($select_cart > 0) {
+         $message[] = 'product already added to cart!';
+      } else {
+         $conn->exec("INSERT INTO `cart`(user_id, name, price, image, quantity) VALUES('$user_id', '$product_name', '$product_price', '$product_image', '$product_quantity')");
+         $message[] = 'product added to cart!';
+      }
    }
-};
+} elseif (!isset($_SESSION['user']) && isset($_POST['add_to_cart'])) {
+?>
+   <script>
+      alert("Ban can phai dang nhap truoc khi them san pham vao gio hang")
+   </script>
+
+<?php
+}
 
 ?>
 
@@ -64,11 +75,11 @@ foreach ($select_product as $row) {
 
          </div>
          <form method="post" class="box" action="">
-         <input type="number" min="1" max="<?php echo $row['sl']; ?>" name="product_quantity" value="1">
-         <input type="hidden" name="sanpham_image" value="<?php echo $row['image1']; ?>">
-         <input type="hidden" name="sanpham_name" value="<?php echo $row['name']; ?>">
-         <input type="hidden" name="sanpham_price" value="<?php echo $row['price']; ?>">
-         <input type="submit" value="Thêm vào giỏ" name="add_to_cart" class="btn">
+            <input type="number" min="1" max="<?php echo $row['sl']; ?>" name="product_quantity" value="1">
+            <input type="hidden" name="sanpham_image" value="<?php echo $row['image1']; ?>">
+            <input type="hidden" name="sanpham_name" value="<?php echo $row['name']; ?>">
+            <input type="hidden" name="sanpham_price" value="<?php echo $row['price']; ?>">
+            <input type="submit" value="Thêm vào giỏ" name="add_to_cart" class="btn">
          </form>
       </div>
 <?php
