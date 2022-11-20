@@ -1,10 +1,11 @@
 <?php
 
-use function PHPSTORM_META\type;
 
 session_start();
 include 'connect.php';
-
+if(!isset($user_id)){
+   header('location:login.php');
+};
 $user_id = $_SESSION['user'];
 $grand_total = 0;
 
@@ -16,23 +17,6 @@ foreach ($cart_query as $row) {
 }
 
 
-if (isset($_POST['add_to_cart'])) {
-
-   $product_name = $_POST['product_name'];
-   $product_price = $_POST['product_price'];
-   $product_image = $_POST['product_image'];
-   $product_quantity = $_POST['product_quantity'];
-
-   $select_cart =  $conn->query(" SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'");
-
-   if ($select_cart > 0) {
-      $message[] = 'product already added to cart!';
-   } else {
-      $conn->exec("INSERT INTO `cart`(user_id, name, price, image, quantity) VALUES('$user_id', '$product_name', '$product_price', '$product_image', '$product_quantity')");
-      $message[] = 'product added to cart!';
-   }
-};
-
 if (isset($_POST['update_cart'])) {
    $update_quantity = $_POST['cart_quantity'];
    $update_id = $_POST['cart_id'];
@@ -43,12 +27,12 @@ if (isset($_POST['update_cart'])) {
 if (isset($_GET['remove'])) {
    $remove_id = $_GET['remove'];
    $conn->exec("DELETE FROM `cart`WHERE id = '$remove_id'");
-   header('location:index.php');
+   header('location:card.php');
 }
 
 if (isset($_GET['delete_all'])) {
    $conn->exec("DELETE FROM `cart` ");
-   header('location:index.php');
+   header('location:card.php');
 }
 
 if (isset($_POST['thanhtoan'])) {

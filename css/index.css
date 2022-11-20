@@ -181,8 +181,8 @@ background: rgb(161, 139, 139);
 
 /*----------------------------------------footer------------------------------*/
 .foot {
-	border-top: 1em solid rgb(246, 244, 244);
-	position: relative;
+padding-left: 150px;
+
     height: fit-content;
  } 
 .hotline  {
@@ -192,9 +192,7 @@ background: rgb(161, 139, 139);
 .email {
 	margin-bottom: 2px;
 }
-.emailbusiness{
-	margin-top: 2px;
-}
+
 h4 {
 	margin-bottom: 2px;
 	color:  #a8a8a8;

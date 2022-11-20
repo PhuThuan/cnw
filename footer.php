@@ -26,10 +26,7 @@
           <h6>09:30 - 21:30</h6>
 
          </div>
-         <div class="emailbusiness">
-          <p>Email Busiess</p>
-          <h6>business@gmail.com</h6>
-         </div>
+        
     </div>
     <div class="col-md-2">
       <h3>Hỗ Trợ</h3>

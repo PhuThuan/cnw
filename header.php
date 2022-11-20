@@ -12,6 +12,7 @@
             </div>
             <div class="col-lg-2 ">
             <a href="login.php" class="col-lg-1">ĐĂNG NHẬP</a>/
+            
             <a href="registration.php" class="col-lg-1">ĐĂNG KÝ</a>
             </div>
             <div class="col-lg-1 ">

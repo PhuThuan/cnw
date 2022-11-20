@@ -1,6 +1,6 @@
 <?php
 session_start();
-$user_id = $_SESSION['user'];
+
 
 include 'connect.php';
 
@@ -14,8 +14,9 @@ include 'connect.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EASY</title>
-    <link rel="stylesheet" href="css/index.css">
+
     <link rel="stylesheet" href="css/shopall.css">
+    <link rel="stylesheet" href="css/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -122,15 +123,7 @@ include 'connect.php';
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
+    </div>
 
         <?php include_once 'footer.php'; ?>
 
