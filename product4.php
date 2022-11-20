@@ -24,7 +24,7 @@ if (isset($_SESSION['user'])) {
 } elseif (!isset($_SESSION['user']) && isset($_POST['add_to_cart'])) {
 ?>
    <script>
-      alert("Ban can phai dang nhap truoc khi them san pham vao gio hang")
+      alert("Bạn cần phải đăng nhập trước khi thêm vào giỏ hàng")
    </script>
 
 <?php

@@ -177,7 +177,7 @@ if($grand_total > 0) {
 
 <?php
 } else {
-   echo "<h1>Khong co san pham trong gio hang, click <a href='index.php'>vao day</a> de ve trang chu</h1>";
+   echo "<h1>Không có sản phẩm trong giỏ hàng, click <a href='index.php'>vào đây</a> để về trang chủ</h1>";
 
 }
 ?>
