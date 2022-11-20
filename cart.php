@@ -3,9 +3,7 @@
 
 session_start();
 include 'connect.php';
-if(!isset($user_id)){
-   header('location:login.php');
-};
+
 $user_id = $_SESSION['user'];
 $grand_total = 0;
 
