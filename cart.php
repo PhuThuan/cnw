@@ -3,17 +3,24 @@
 
 session_start();
 include 'connect.php';
-
+$user_id=0;
+if(isset($_SESSION['user'])){
 $user_id = $_SESSION['user'];
 $grand_total = 0;
 
-$cart_query = $conn->query("SELECT * FROM `cart` where user_id='$user_id'");
+ //$cart_query = $conn->query("SELECT * FROM `cart` where user_id='$user_id'");
 
-foreach ($cart_query as $row) {
+
+ $sql = 'SELECT * FROM cart WHERE user_id = :id';
+ $cart_query = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+ $cart_query->execute(['id' => $user_id]);
+ // $red = $sth->fetchAll();
+ while ($row = $cart_query->fetch()) {
    $sub_total = ($row['price'] * $row['quantity']);
    $grand_total += $sub_total;
 }
-
+$tong=$grand_total;
+//$grand_total = $grand_total-10;
 
 if (isset($_POST['update_cart'])) {
    $update_quantity = $_POST['cart_quantity'];
@@ -22,16 +29,7 @@ if (isset($_POST['update_cart'])) {
    $message[] = 'cart quantity updated successfully!';
 }
 
-if (isset($_GET['remove'])) {
-   $remove_id = $_GET['remove'];
-   $conn->exec("DELETE FROM `cart`WHERE id = '$remove_id'");
-   header('location:card.php');
-}
 
-if (isset($_GET['delete_all'])) {
-   $conn->exec("DELETE FROM `cart` ");
-   header('location:card.php');
-}
 
 if (isset($_POST['thanhtoan'])) {
 
@@ -60,7 +58,16 @@ if (isset($_POST['thanhtoan'])) {
       
    }
 }
+if (isset($_GET['remove'])) {
+   $remove_id = $_GET['remove'];
+   $conn->exec("DELETE FROM `cart`WHERE id = '$remove_id'");
+   header('location:cart.php');
+}
 
+if (isset($_GET['delete_all'])) {
+   $conn->exec("DELETE FROM `cart` ");
+   header('location:cart.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +162,7 @@ if($grand_total > 0) {
                      ?>
                      <tr class="table-bottom">
                         <td colspan="4">grand total :</td>
-                        <td>$<?php echo $grand_total; ?>/-</td>
+                        <td>$<?php echo $tong; ?>/-</td>
                         <td><a href="cart.php?delete_all" onclick="return confirm('delete all from cart?');" class="delete-btn <?php echo ($grand_total > 1) ? '' : 'disabled'; ?>">delete all</a></td>
                      </tr>
                   </tbody>
@@ -192,3 +199,8 @@ if($grand_total > 0) {
 </body>
 
 </html>
+<?php
+}
+else
+header('location:index.php');
+?>

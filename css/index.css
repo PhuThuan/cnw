@@ -180,8 +180,11 @@ background: rgb(161, 139, 139);
 }
 
 /*----------------------------------------footer------------------------------*/
+footer{
+    width: 100%;
+}
 .foot {
-padding-left: 150px;
+/* padding-left: 100px; */
 
     height: fit-content;
  } 
@@ -193,12 +196,12 @@ padding-left: 150px;
 	margin-bottom: 2px;
 }
 
-h4 {
+h6 {
 	margin-bottom: 2px;
 	color:  #a8a8a8;
 }
 .foot .col-md-2 {
-	margin: 0 4.1em;
+	margin: 0 4em;
     width: 15%;
 	
 }
@@ -207,9 +210,9 @@ h4 {
 }
 .ft-icon i {
 	font-size: 15px;
-	margin-right: 50px;
+	margin-right: 40px;
 }
-.sp h4 {
+.sp h6 {
 	margin-top: 3px;
 }
 .sanpham {

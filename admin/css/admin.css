@@ -1,0 +1,17 @@
+.admin-shopping-cart{
+    padding-top: 50px;
+    padding-left: 50px;
+
+}
+.admin-shopping-cart th{
+    padding: 10px 30px;
+}
+
+.admin-shopping-cart td{
+    padding: 10px 30px;
+}
+.themsp{
+    position:relative;
+    top:35px;
+    left: 1215px;
+}

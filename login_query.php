@@ -14,11 +14,19 @@
 			$query->execute(array($username,$password));
 			$row = $query->rowCount();
 			$fetch = $query->fetch();
-			if($row > 0) {
+
+			if($row > 0 && $fetch['admin']==1 ){
+				$_SESSION['admin'] = $fetch['admin'];
+				printf($_SESSION['admin']);
+				header("location:admin/adminindex.php");
+			}
+			else if($row > 0) {
 				$_SESSION['user'] = $fetch['id'];
 				printf($_SESSION['user']);
 				header("location:index.php");
-			} else{
+			}
+			 else
+			{
 				echo "
 				<script>alert('Invalid username or password')</script>
 				<script>window.location = 'index.php'</script>
