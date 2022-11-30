@@ -6,9 +6,8 @@
 	if(ISSET($_POST['login'])){
 		if($_POST['username'] != "" || $_POST['password'] != ""){
 			$username = $_POST['username'];
-			// md5 encrypted
-			// $password = md5($_POST['password']);
-			$password = $_POST['password'];
+		//	$password =md5($_POST['password']) ;
+			$password =$_POST['password'];
 			$sql = "SELECT * FROM `user_info` WHERE `email`=? AND `password`=? ";
 			$query = $conn->prepare($sql);
 			$query->execute(array($username,$password));
@@ -29,7 +28,7 @@
 			{
 				echo "
 				<script>alert('Invalid username or password')</script>
-				<script>window.location = 'index.php'</script>
+				<script>window.location = 'login.php'</script>
 				";
 			}
 		}else{

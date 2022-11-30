@@ -3,42 +3,65 @@ include '../connect.php';
 
 session_start();
 
-$id=0;
-
-
-if (isset($_SESSION['idsp'])) {
-    $id = $_SESSION['idsp'];
-   
-}
 $user_id = 0;
 if (isset($_SESSION['user'])) {
     $user_id = $_SESSION['user'];
 }
 
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-
-
-
-
-    if (isset($_POST['submit'])) {
-
-        $cart_query = $conn->prepare("UPDATE `sanpham`
-             set `loai`= ? and `noibat`= ? and `name`= ?and `sl`= ? and `price`= ? and `discount`= ? WHERE `id`=?");
-        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $id]);
-  
-        unset($_SESSION['idsp']);
-
-?>
-        <script>
-            window.location = 'adminindex.php';
-        </script>
-<?php
-
+    if (isset($_GET["id"])) {
+        $id = 0;
+        $id = $_GET["id"];
     }
 
+    if (isset($_POST['submit']) && ($_POST['submit'])) {
+      
+        $hinhanh1 = basename($_FILES['id8']['name']);
+        echo( $hinhanh1);
+        $hinhanh2 = basename($_FILES['id9']['name']);
+        if($hinhanh1!="" && $hinhanh2!=""){
+        $cart_query = $conn->prepare("UPDATE `sanpham`
+             SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ?,`image1`= ?,`image2`= ? where `id`=?");
 
 
+        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh1, $hinhanh2,$id]);}
+        elseif($hinhanh1=="" && $hinhanh2==""){
+            $cart_query = $conn->prepare("UPDATE `sanpham`
+            SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ? where `id`=?");
+
+
+       $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $id]);
+    }
+        
+        elseif( $hinhanh1!=""){
+            $cart_query = $conn->prepare("UPDATE `sanpham`
+             SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ?,`image1`= ? where `id`=?");
+
+
+        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh1, $id]);
+        }
+        else{
+            $cart_query = $conn->prepare("UPDATE `sanpham`
+            SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ?,`image2`= ? where `id`=?");
+
+
+       $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh2, $id]);
+        }
+    
+
+
+    
 ?>
+        <script>
+            // window.location = 'adminindex.php';
+        </script>
+    <?php
+
+    
+}
+
+
+    ?>
 
 
     <!DOCTYPE html>
@@ -50,7 +73,6 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>EASY</title>
         <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../css/index.css">
         <link rel="stylesheet" href="css/admin.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,24 +88,27 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         <a href="adminindex.php"><button>Thoát </button></a>
         <div class="admin-shopping-cart">
             <?php
-
-        print_r($id);
-            $cart_query = $conn->prepare('SELECT * FROM sanpham where id=?');
+            
+            $cart_query = $conn->prepare('SELECT * FROM sanpham WHERE id=?');
             $cart_query->execute([$id]);
             while ($row = $cart_query->fetch()) {
             ?>
-                <form action="update.php" method="post">
+                 <form action="update.php?id=<?php echo $row['id']; ?>" method="post" enctype="multipart/form-data">
+
+                 
+                    <p><label><?php echo $row['loai']?><input type="text" name="id2" value="<?php echo $row['loai']?>"></label></p>
+                    <p><label><?php echo $row['noibat']?> <input type="text" name="id3" value="<?php echo $row['noibat']?>"></label></p>
+                    <p><label><?php echo $row['name']?> <input type="text" name="id4" value="<?php echo $row['name']?>"></label></p>
+                    <p><label><?php echo $row['sl']?> <input type="text" name="id5" value="<?php echo $row['sl']?>"></label></p>
+                    <p><label><?php echo $row['price']?> <input type="text" name="id6" value="<?php echo $row['price']?>"></label></p>
+                    <p><label><?php echo $row['discount']?> <input type="text" name="id7" value="<?php echo $row['discount']?>"></label></p>
 
 
-                    <p><label><?php echo $row['loai'] ?> <input type="text" value="<?php echo $row['loai'] ?>" name="id2"></label></p>
-                    <p><label><?php echo $row['noibat']?><input type="text" value="<?php echo $row['noibat'] ?>" name="id3"></label><p>
-                    <p><label><?php echo $row['name'] ?> <input type="text" value="<?php echo $row['name'] ?>" name="id4"></label></p>
-                    <p><label><?php echo $row['sl'] ?><input type="text" value="<?php echo $row['sl'] ?>" name="id5"></label></p>
-                    <p><label><?php echo $row['price'] ?> <input type="text" value="<?php echo $row['price'] ?>" name="id6"></label></p>
-                    <p><label><?php echo $row['discount'] ?> <input type="text" value="<?php echo $row['discount'] ?>" name="id7"></label></p>
-                    <p><label><?php echo $row['image1'] ?> <input type="file" value="<?php echo $row['image1'] ?>" name="id8"></label></p>
-                    <p><label><?php echo $row['image2'] ?> <input type="file" value="<?php echo $row['image2'] ?>" name="id9"></label></p>
-                    <p><input type="submit" name="submit"></p>
+                    <p><label><?php echo $row['image1']?> <input type="file" name="id8" id="id8" ></label></p>
+                    <p><label><?php echo $row['image2']?> <input type="file" name="id9" id="id9"></label></p>
+                    <p><input type="submit" name="submit" value="submit"></p>
+
+                    </form>
 
                 <?php
             }

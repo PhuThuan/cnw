@@ -47,7 +47,7 @@ session_start();
 
                 <div style="float:left; position:relative;">
 
-                    <div style=" position:fixed;">
+                    <div>
                         <p class="margin_bottom_5"><b>Giá tiền:</b>
 
                         </p>
@@ -119,7 +119,7 @@ session_start();
       <h1 class="heading">latest products</h1>
 
       <div class="box-container"> -->
-                        <?php include_once 'product4.php' ?>
+                        <?php include_once 'product-tops.php' ?>
 
 
                     </div>

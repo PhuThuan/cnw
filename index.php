@@ -121,7 +121,7 @@ if(isset($_SESSION['user'])){
       <div class="box-container"> -->
          
           
-           <?php include_once 'product.php'?>
+           <?php include_once 'product-index.php'?>
            
 
          </div>

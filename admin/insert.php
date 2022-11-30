@@ -10,22 +10,43 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
 
 
- 
-    if(isset($_POST['submit'])){
-         
-             $cart_query = $conn->prepare("INSERT INTO `sanpham` (`id`, `loai`, `noibat`, `name`, `sl`, `price`, `discount`, `image1`, `image2`) values(?,?,?,?,?,?,?,?,?)");
-             $cart_query->execute([$_POST['id1'],$_POST['id2'],$_POST['id3'],$_POST['id4'],$_POST['id5'],$_POST['id6'],$_POST['id7'],$_POST['id8'],$_POST['id9']]);
-             
-           
 
-?><script>window.location = 'insert.php'</script>
-<?php
+    if (isset($_POST['submit']) && ($_POST['submit'])) {
+        //max upload is 2 Mb = 2 * 1024 kb * 1024 bite
 
-}
 
+        //Kiểm tra xem kiểu file có hợp lệ không?
+
+        //Check xem file đã tồn tại chưa? Nếu tồn tại thì đổi tên
+
+
+
+
+        $hinhanh1 = basename($_FILES['fileToUpload']['name']);
+        $hinhanh2 = basename($_FILES['fileToUpload2']['name']);
+        $cart_query = $conn->prepare("INSERT INTO `sanpham` (`id`, `loai`, `noibat`, `name`, `sl`, `price`, `discount`, `image1`, `image2`) values(?,?,?,?,?,?,?,?,?)");
+        $cart_query->execute([$_POST['id1'], $_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh2, $hinhanh1]);
+
+
+
+        $target_dir = "../img/sanpham/";
+        $target_file = $target_dir . $hinhanh1;
+        $target_file2 = $target_dir . $hinhanh2;
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file2)) {
+            echo ("thanhcong");
+        }
 
 
 ?>
+
+        <!-- <script>window.location = 'insert.php'</script> -->
+    <?php
+
+    }
+
+
+
+    ?>
 
 
     <!DOCTYPE html>
@@ -49,32 +70,36 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     </head>
 
     <body>
-       
+
         <a href="adminindex.php"><button>Thoát </button></a>
-        <div class="admin-shopping-cart">    
-<form action="insert.php" method="post">
+        <div class="admin-shopping-cart">
+            <form action="insert.php" method="post" enctype="multipart/form-data">
 
-               <p><label> <input type="text" name="id1"></label></p>
-              <p><label> <input type="text" name="id2"></label></p>
-            <p><label> <input type="text" name="id3"></label></p>
-                       <p><label> <input type="text" name="id4"></label></p>
-              <p><label> <input type="text" name="id5"></label></p>
-              <p><label> <input type="text" name="id6"></label></p>
-              <p><label> <input type="text" name="id7"></label></p>
-              <p><label> <input type="file" name="id8"></label></p>
-              <p><label> <input type="file" name="id9"></label></p>
-               <p><input type="submit" name="submit" ></p>
-              <?php 
-              
-  
-        
-       //  while ($row = $cart_query->fetch()) {
-         ?>   
-         <?php
-    //     }
-?>
+                <p><label> <input type="text" name="id1"></label></p>
+                <p><label> <input type="text" name="id2"></label></p>
+                <p><label> <input type="text" name="id3"></label></p>
+                <p><label> <input type="text" name="id4"></label></p>
+                <p><label> <input type="text" name="id5"></label></p>
+                <p><label> <input type="text" name="id6"></label></p>
+                <p><label> <input type="text" name="id7"></label></p>
 
-         
+
+                <p><label> <input type="file" name="fileToUpload2" id="fileToUpload2"></label></p>
+                <p><label> <input type="file" name="fileToUpload" id="fileToUpload"></label></p>
+                <p><input type="submit" name="submit" value="submit"></p>
+
+            </form>
+            <?php
+
+
+
+            //  while ($row = $cart_query->fetch()) {
+            ?>
+            <?php
+            //     }
+            ?>
+
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         </script>

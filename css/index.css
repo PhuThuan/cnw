@@ -7,8 +7,16 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(19, 17, 17);
     background-color: rgb(248, 242, 242);
+    
 }
-
+body a{
+    text-decoration: none;
+    color: #000;
+    
+}
+body a:hover{
+    color: #000;
+}
 .container{
     margin: 0px auto;
     max-width: 960px;
@@ -182,6 +190,7 @@ background: rgb(161, 139, 139);
 /*----------------------------------------footer------------------------------*/
 footer{
     width: 100%;
+    display: block;
 }
 .foot {
 /* padding-left: 100px; */
@@ -240,4 +249,9 @@ h6 {
 }
 .cart-btn{
     padding: 20px;
+}
+/* product-detail */
+.detail-sp{
+padding-top: 100px;
+margin-top:100px ;
 }

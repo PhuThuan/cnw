@@ -35,15 +35,10 @@ if (isset($_SESSION['user'])) {
 
    $selectsanpham = "SELECT * FROM `sanpham`";
    $select_product  = $conn->query($selectsanpham);
-   
-   
-   
-   
-
-
-
-   foreach ($select_product as $row) {
+     foreach ($select_product as $row) {
          if ($row['loai'] == $quanngan || $row['loai'] == $quandai) {
+
+        
             $gia;
             if ($row['price'] > 100000 && $row['price'] <= 200000) {
                $gia = "100-200";
@@ -110,9 +105,8 @@ if (isset($_SESSION['user'])) {
           </div>
  <?php
          }
+      
       }
-   ;
-
    ?>
 
  </div>

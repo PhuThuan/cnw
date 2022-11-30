@@ -2,7 +2,7 @@
 
 
 <!--------------------------footer---------------------------------->
-<footer class="w-100 container text-center" >
+<footer class="w-100 container text-center " >
   <div class="foot row ">
     
       <div class="col-3 ">

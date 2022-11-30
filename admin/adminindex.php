@@ -20,7 +20,11 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
    }
 
 
-
+   if (isset($_GET['remove'])) {
+      $remove_id = $_GET['remove'];
+      $conn->exec("DELETE FROM `sanpham`WHERE id = '$remove_id'");
+      header('location:adminindex.php');
+   }
 
 
 
@@ -84,9 +88,9 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                      <td><?php echo $row['discount']; ?></td>
                      <td><img src="../img/sanpham/<?php echo $row['image1']; ?>" height="100" alt=""></td>
                      <td><img src="../img/sanpham/<?php echo $row['image2']; ?>" height="100" alt=""></td>
-                     <td><a href="update.php?update=<?php echo $row['id']; ?>" 
+                     <td><a href="update.php?id=<?php echo $row['id']; ?>" 
                                                 class="delete-btn">Chỉnh sửa</a></td>
-                     <td><a href="cart.php?update=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('update item from cart?');">Xóa</a></td>
+                     <td><a href="adminindex.php?remove=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('remove item from cart?');">remove</a></td>
                   </tr>
  <?php
 
