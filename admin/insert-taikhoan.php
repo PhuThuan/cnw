@@ -11,9 +11,31 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
 
 
+    if (isset($_POST['submit']) && ($_POST['submit'])) {
+        //max upload is 2 Mb = 2 * 1024 kb * 1024 bite
+
+
+        //Kiểm tra xem kiểu file có hợp lệ không?
+
+        //Check xem file đã tồn tại chưa? Nếu tồn tại thì đổi tên
+
+
+
+
+        $cart_query = $conn->prepare("INSERT INTO `user_info` (`name`, `email`, `password`,admin) values(?,?,?,?)");
+        $cart_query->execute([$_POST['id1'], $_POST['id2'], md5($_POST['id3']),$_POST['id4']])
 
 
 ?>
+
+        <!-- <script>window.location = 'insert.php'</script> -->
+    <?php
+
+    }
+
+
+
+    ?>
 
 
     <!DOCTYPE html>
@@ -38,33 +60,28 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
     <body>
 
-        <?php require_once "adminheader.php"; ?>
+        <a href="taikhoan.php"><button>Thoát </button></a>
         <div class="admin-shopping-cart">
-        <table>
-               <thead>
-                  <th>ID</th>
-                  <th>TÊN</th>
-                  <th>TỔNG TIỀN</th>
-               </thead>
-               
-        <?php
-        $sql = 'SELECT bill.id,bill.prices,user_info.name FROM `bill`,`user_info` where bill.user_id=user_info.id ';
-        $cart_query = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-        $cart_query->execute([]);
-        while ($row = $cart_query->fetch()) {
-        ?>
+            <form action="insert-taikhoan.php" method="post" enctype="multipart/form-data">
 
-<tr>
-                     <td><?php echo $row['id']; ?></td>
-                     <td><?php echo $row['name']; ?></td>
-                     <td><?php echo $row['prices']; ?></td>
-</tr>
+                <p><label> <input type="text" name="id1"></label></p>
+                <p><label> <input type="email" name="id2"></label></p>
+                <p><label> <input type="text" name="id3"></label></p>
+                <p><label> <input type="text" name="id4" value="0"></label></p>
+                <p><input type="submit" name="submit" value="submit"></p>
+
+            </form>
+            <?php
 
 
 
-        <?php }
-        ?>
-        </table>
+            //  while ($row = $cart_query->fetch()) {
+            ?>
+            <?php
+            //     }
+            ?>
+
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         </script>

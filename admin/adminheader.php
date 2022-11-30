@@ -2,15 +2,14 @@
 
     <div class="container text-center ">
         <div class="row align-items-start " id="menu">
-            <a class=" col-lg-1 navbar-brand" href="index.php">
+            <a class=" col-lg-1 navbar-brand" href="adminindex.php">
                 <img src="../img/logo.jpg" alt="" width="30" height="24">
             </a>
             
                 
        
-            <a href="sanpham.php" class="col-lg-1">SẢN PHẨM</a>
             <a href="donhang.php" class="col-lg-2">ĐƠN HÀNG</a>
-            <a href="donhang.php" class="col-lg-2">TÀI KHOẢN</a>
+            <a href="taikhoan.php" class="col-lg-2">TÀI KHOẢN</a>
 
             <?php
 
@@ -49,9 +48,7 @@
  <a href="#" class="col-lg-1"><a href="../logout.php ">logout</a>
             </div>
             
-            <div class="col-lg-1 ">
-                <a href="../lesson-6/index.php" class="col-lg-1">TÌM KIẾM</a>
-            </div>
+            
            
         </div>
     </div>

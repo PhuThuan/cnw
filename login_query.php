@@ -6,8 +6,8 @@
 	if(ISSET($_POST['login'])){
 		if($_POST['username'] != "" || $_POST['password'] != ""){
 			$username = $_POST['username'];
-		//	$password =md5($_POST['password']) ;
-			$password =$_POST['password'];
+			$password =md5($_POST['password']) ;
+		//	$password =$_POST['password'];
 			$sql = "SELECT * FROM `user_info` WHERE `email`=? AND `password`=? ";
 			$query = $conn->prepare($sql);
 			$query->execute(array($username,$password));
