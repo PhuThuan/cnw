@@ -18,11 +18,7 @@
 
         
             $admin_id = $_SESSION['admin'];
-            //    $sql="SELECT * FROM user_info WHERE id='$user_id'";
-
-            //  $sth = $conn->query($sql);
-            //    // $sth->execute([$user_id]);
-
+    
 
             $sql = 'SELECT * FROM user_info WHERE admin = :id';
             $sth = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);

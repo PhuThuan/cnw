@@ -32,9 +32,18 @@ if (isset($_POST['update_cart'])) {
 
 
 if (isset($_POST['thanhtoan'])) {
+   $card_id=0;
+   $sql = 'SELECT id FROM cart WHERE user_id = :id';
+   $cart_query = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+   $cart_query->execute(['id' => $user_id]);
+   while ($row = $cart_query->fetch()){
+      $card_id=$row['id'];
+   }
 
-   $conn->exec("INSERT INTO `bill`(user_id, prices) VALUES('$user_id', '$grand_total')");
-   $sql2 = "SELECT Max(id) as ID FROM bill";
+
+
+   $conn->exec("INSERT INTO `bill`(user_id,card_id, prices) VALUES('$user_id',$card_id ,'$grand_total')");
+   $sql2 = "SELECT Max(id) as ID FROM bill where user_id=$user_id";
    $result2 = $conn->query($sql2);
    while ($rows = $result2->fetchAll(PDO::FETCH_ASSOC)) {
       foreach ($rows as $item) {

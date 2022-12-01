@@ -125,9 +125,7 @@ header{
     color: #000;
    }
    /* san pham */
-#sp1_h1:hover{
-    
-}
+
 
 .ovuong{
     /* border: 1px solid black;
@@ -137,24 +135,21 @@ header{
      background: #000; */
     /* color: yellow;  */
    }
-   .sanpham-muahang{
-color: rgb(248, 242, 242);
-    height: 30px;
-    width: 40%;
-
-   }
-.ovuong .a1{
- border: 1px solid black;
- content: none;
- background: #000;
- color: yellow;
-}
+   .san
 
 
 .spham{
     border: 1px solid black;
     height: 630x;
+    
 }
+.spham a{
+    color: #000;
+}
+.spham:hover{
+    text-decoration: #000;
+}
+
 .spham input{
   border: 1px solid back;
 }
@@ -254,4 +249,31 @@ h6 {
 .detail-sp{
 padding-top: 100px;
 margin-top:100px ;
+}
+
+.scroll {
+	float: left;
+	height: 650px;
+	width: 50%px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.force-overflow {
+	min-height: 450px;
+}
+
+#style-1::-webkit-scrollbar {
+	width: 10px;
+	background-color: #F5F5F5;
+}
+/**  STYLE 4 */
+#style-1::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+	background-color: #000000;
 }

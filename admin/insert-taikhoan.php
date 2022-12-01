@@ -12,17 +12,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
 
     if (isset($_POST['submit']) && ($_POST['submit'])) {
-        //max upload is 2 Mb = 2 * 1024 kb * 1024 bite
+      
 
 
-        //Kiểm tra xem kiểu file có hợp lệ không?
-
-        //Check xem file đã tồn tại chưa? Nếu tồn tại thì đổi tên
-
-
-
-
-        $cart_query = $conn->prepare("INSERT INTO `user_info` (`name`, `email`, `password`,admin) values(?,?,?,?)");
+        $cart_query = $conn->prepare("INSERT INTO `user_info` (`name`, `email`, `password`,address,SDT,admin) values(?,?,?,'','',?)");
         $cart_query->execute([$_POST['id1'], $_POST['id2'], md5($_POST['id3']),$_POST['id4']])
 
 

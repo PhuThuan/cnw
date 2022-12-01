@@ -71,7 +71,7 @@ foreach ($select_product as $row) {
                                                          $dis = 'data-brand_name2="discount"';
                                                          echo $dis;
                                                       } ?> data-money="<?php echo $gia; ?>" data-brand_name="<?php echo $row['loai']; ?>" data-brand_name1="<?php if ($row['noibat'] == 1) echo $noibat; ?>">
-
+ <a href="product-detail.php?id=<?php echo $row['id']; ?>" class="delete-btn">
          <img src="img/sanpham/<?php echo $row['image1']; ?>" alt="" class="d-block w-100 mx-auto hinh" onmouseover="this.src='img/sanpham/<?php echo $row['image2']; ?>';" onmouseout="this.src='img/sanpham/<?php echo $row['image1']; ?>';" />
 
          <div class="name"><?php echo $row['name']; ?></div>
@@ -100,6 +100,7 @@ foreach ($select_product as $row) {
 
 
          </div>
+ </a>
          <form method="post" class="box" action="">
             <input type="number" min="1" max="<?php echo $row['sl']; ?>" name="product_quantity" value="1">
             <input type="hidden" name="sanpham_image" value="<?php echo $row['image1']; ?>">

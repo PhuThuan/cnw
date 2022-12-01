@@ -41,19 +41,16 @@ if (isset($_SESSION['user'])) {
 
 $selectsanpham = "SELECT * FROM `sanpham`";
 $select_product  = $conn->query($selectsanpham);
-$i=0;
+$i = 0;
 foreach ($select_product as $row) {
-   if ($row['id'] <= 16 && $i<8)  {
+   if ($row['id'] <= 16 && $i < 8) {
 ?>
-      <div class="col-lg-3 spham "><a href="product-detail.php?id=<?php echo $row['id']; ?>" 
-class="delete-btn">
+      <div class="col-lg-3 spham ">
+         <a href="product-detail.php?id=<?php echo $row['id']; ?>" class="delete-btn">
             <img src="img/sanpham/<?php echo $row['image1']; ?>" alt="" class="d-block w-100 mx-auto hinh" onmouseover="this.src='img/sanpham/<?php echo $row['image2']; ?>';" onmouseout="this.src='img/sanpham/<?php echo $row['image1']; ?>';" />
-
             <div class="name"><?php echo $row['name']; ?></div>
-
             <div class="sl">số lượng <?php echo $row['sl']; ?></div>
             <div class="gia row text-center">
-
                <?php if ($row['discount'] != 0) {
                ?>
                   <div class="discount col">-<?php echo $row['discount']; ?>%</div>
@@ -68,17 +65,18 @@ class="delete-btn">
                <?php
                } ?>
             </div>
-            <form method="post" class="box" action="">
-               <input type="number" min="1" max="<?php echo $row['sl']; ?>" name="product_quantity" value="1">
-               <input type="hidden" name="sanpham_image" value="<?php echo $row['image1']; ?>">
-               <input type="hidden" name="sanpham_name" value="<?php echo $row['name']; ?>">
-               <input type="hidden" name="sanpham_price" value="<?php echo $row['price']; ?>">
-               <input type="submit" value="Thêm vào giỏ" name="add_to_cart" class="btn">
-            </form>
          </a>
+         <form method="post" class="box" action="">
+            <input type="number" min="1" max="<?php echo $row['sl']; ?>" name="product_quantity" value="1">
+            <input type="hidden" name="sanpham_image" value="<?php echo $row['image1']; ?>">
+            <input type="hidden" name="sanpham_name" value="<?php echo $row['name']; ?>">
+            <input type="hidden" name="sanpham_price" value="<?php echo $row['price']; ?>">
+            <input type="submit" value="Thêm vào giỏ" name="add_to_cart" class="btn">
+         </form>
+
       </div>
 <?php
-$i++;
+      $i++;
    }
 };
 ?>

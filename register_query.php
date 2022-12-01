@@ -11,7 +11,7 @@
 				$password = md5($_POST['password']);
 			//	$password = $_POST['password'];
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				$sql = "INSERT INTO `user_info` VALUES ('', '$firstname', '$username', '$password','')";
+				$sql = "INSERT INTO `user_info` VALUES ('', '$firstname', '$username', '$password','','','')";
 				$conn->exec($sql);
 			}catch(PDOException $e){
 				echo $e->getMessage();

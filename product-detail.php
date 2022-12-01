@@ -93,10 +93,12 @@ if (isset($_GET["id"])) {
 
 
         <div class="container text-center ">
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="img/sanpham/<?php echo ($row['image1']) ?>" class="d-block mx-auto" height="500px" width="500px">
-                    <img src="img/sanpham/<?php echo ($row['image2']) ?>" class="d-block w-100 mx-auto">
+            <div class="row align-items-start">
+                <div class="col-lg-6 scroll" id="style-1">
+                    <div class="force-overflow">
+                        <img src="img/sanpham/<?php echo ($row['image1']) ?>" class="d-block w-100 mx-auto">
+                        <img src="img/sanpham/<?php echo ($row['image2']) ?>" class="d-block w-100 mx-auto">
+                    </div>
                 </div>
                 <div class="col-lg-6 detail-sp">
                     <div class="name"><?php echo $row['name']; ?></div>

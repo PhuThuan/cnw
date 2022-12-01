@@ -40,7 +40,7 @@ include 'connect.php';
          ?>
          
             <div class="col-lg-2 ">
-                <a href="#" class="col-lg-1"> <?php echo $row['name'];  ?></a>
+                <a href="taikhoan.php" class="col-lg-1"> <?php echo $row['name'];  ?></a>
                 <a href="#" class="col-lg-1"><a href="logout.php ">LOGOUT</a>
 
             </div>
