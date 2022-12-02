@@ -15,37 +15,40 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     }
 
     if (isset($_POST['submit']) && ($_POST['submit'])) {
-      
-        $hinhanh1 = basename($_FILES['id8']['name']);
-        echo( $hinhanh1);
-        $hinhanh2 = basename($_FILES['id9']['name']);
+  
+        $hinhanh1 = basename($_FILES['id9']['name']);
+
+        $hinhanh2 = basename($_FILES['id10']['name']);
+        $noidung=$_POST['id5'];
+        $noidung=str_replace(".",".<br>",$noidung );
+
         if($hinhanh1!="" && $hinhanh2!=""){
         $cart_query = $conn->prepare("UPDATE `sanpham`
-             SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ?,`image1`= ?,`image2`= ? where `id`=?");
+             SET `loai`= ? , `noibat`= ? , `name`= ? ,`noidung`=?, `sl`= ? , `price`= ? , `discount`= ?,`image1`= ?,`image2`= ? where `id`=?");
 
 
-        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh1, $hinhanh2,$id]);}
+        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'],$noidung , $_POST['id6'], $_POST['id7'],$_POST['id8']. $hinhanh1, $hinhanh2,$id]);}
         elseif($hinhanh1=="" && $hinhanh2==""){
             $cart_query = $conn->prepare("UPDATE `sanpham`
-            SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ? where `id`=?");
+            SET `loai`= ? , `noibat`= ? , `name`= ? ,`noidung`=?, `sl`= ? , `price`= ? , `discount`= ? where `id`=?");
 
 
-       $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $id]);
+       $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'],  $noidung, $_POST['id6'], $_POST['id7'],$_POST['id8'], $id]);
     }
         
         elseif( $hinhanh1!=""){
             $cart_query = $conn->prepare("UPDATE `sanpham`
-             SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ?,`image1`= ? where `id`=?");
+             SET `loai`= ? , `noibat`= ? , `name`= ? ,`noidung`=?, `sl`= ? , `price`= ? , `discount`= ?,`image1`= ? where `id`=?");
 
 
-        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh1, $id]);
+        $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'],  $noidung, $_POST['id6'], $_POST['id7'],$_POST['id8'], $hinhanh1, $id]);
         }
         else{
             $cart_query = $conn->prepare("UPDATE `sanpham`
-            SET `loai`= ? , `noibat`= ? , `name`= ? , `sl`= ? , `price`= ? , `discount`= ?,`image2`= ? where `id`=?");
+            SET `loai`= ? , `noibat`= ? , `name`= ? ,`noidung`=?, `sl`= ? , `price`= ? , `discount`= ?,`image2`= ? where `id`=?");
 
 
-       $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh2, $id]);
+       $cart_query->execute([$_POST['id2'], $_POST['id3'], $_POST['id4'],  $noidung, $_POST['id6'], $_POST['id7'],$_POST['id8'], $hinhanh2, $id]);
         }
     
 
@@ -99,13 +102,14 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                     <p><label><?php echo $row['loai']?><input type="text" name="id2" value="<?php echo $row['loai']?>"></label></p>
                     <p><label><?php echo $row['noibat']?> <input type="text" name="id3" value="<?php echo $row['noibat']?>"></label></p>
                     <p><label><?php echo $row['name']?> <input type="text" name="id4" value="<?php echo $row['name']?>"></label></p>
-                    <p><label><?php echo $row['sl']?> <input type="text" name="id5" value="<?php echo $row['sl']?>"></label></p>
-                    <p><label><?php echo $row['price']?> <input type="text" name="id6" value="<?php echo $row['price']?>"></label></p>
-                    <p><label><?php echo $row['discount']?> <input type="text" name="id7" value="<?php echo $row['discount']?>"></label></p>
+                    <p><label><?php echo $row['noidung']?> <input type="text" name="id5" value='<?php echo $row['noidung']?>' style="height:100px ; width: 500px;"></label></p>
+                    <p><label><?php echo $row['sl']?> <input type="text" name="id6" value="<?php echo $row['sl']?>"></label></p>
+                    <p><label><?php echo $row['price']?> <input type="text" name="id7" value="<?php echo $row['price']?>"></label></p>
+                    <p><label><?php echo $row['discount']?> <input type="text" name="id8" value="<?php echo $row['discount']?>"></label></p>
 
 
-                    <p><label><?php echo $row['image1']?> <input type="file" name="id8" id="id8" ></label></p>
-                    <p><label><?php echo $row['image2']?> <input type="file" name="id9" id="id9"></label></p>
+                    <p><label><?php echo $row['image1']?> <input type="file" name="id9" id="id9" ></label></p>
+                    <p><label><?php echo $row['image2']?> <input type="file" name="id10" id="id10"></label></p>
                     <p><input type="submit" name="submit" value="submit"></p>
 
                     </form>

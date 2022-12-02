@@ -102,17 +102,21 @@ if (isset($_GET["id"])) {
                 </div>
                 <div class="col-lg-6 detail-sp">
                     <div class="name"><?php echo $row['name']; ?></div>
+                    <div class="noidung">  <?php echo $row['noidung'];?></div>
                     <?php if ($row['discount'] != 0) {
                     ?>
-                        <div class="discount col">-<?php echo $row['discount']; ?>%</div>
-                    <?php } ?>
+                        <div class="discount ">GIẢM GIÁ-<?php echo $row['discount']; ?>%</div>
+                  
 
-                    <div class="price col">$<?php echo $row['price']; ?></div>
-
+                    <div class="price ">GIÁ MỚI $<?php echo $row['price']; ?></div>
+                    <?php } else{?>
+                    <div class="price ">GIÁ $<?php echo $row['price']; ?></div>    
+                    <?php  }?>
+                    
                     <?php if ($row['discount'] != 0) {
                         $aa = (int)($row['price'] / ((100 - $row['discount']) / 100));
                     ?>
-                        <div class="giacu col">$<?php echo $aa; ?></div>
+                        <div class="giacu col">GIÁ CŨ$<?php echo $aa; ?></div>
                     <?php
                     } ?>
 

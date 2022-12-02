@@ -10,14 +10,6 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
 
 
-    if (isset($_GET['update'])) {
-        //   $update_id = $_GET['update'];
-        //  $conn->exec("DELETE FROM `cart`WHERE id = '$update_id'");
-
-        $sql = 'SELECT * FROM sanpham WHERE id = :id';
-        $sth = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-        $sth->execute(['id' => $user_id]);
-    }
 
 
     if (isset($_GET['remove'])) {
@@ -29,10 +21,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     if (isset($_POST['update_tk'])) {
         $update_quantity = md5($_POST['password_new']);
         $update_id = $_POST['update_id'];
-       $a= $conn->prepare("UPDATE `user_info` SET password = ? WHERE id = ?");
-        $a->execute([ $update_quantity, $update_id]);
+        $a = $conn->prepare("UPDATE `user_info` SET password = ? WHERE id = ?");
+        $a->execute([$update_quantity, $update_id]);
         $message[] = 'cart quantity updated successfully!';
-     }
+    }
 
 
 ?>
@@ -93,7 +85,8 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                             <td><a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample<?php echo $row['id']; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">Đổi mật khẩu</a></td>
                             <td><a href="taikhoan.php?remove=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('remove item from user?');">remove</a></td>
                             <td>
-                                <div class="collapse row g-3" id="collapseExample<?php echo $row['id'];   $message[] = 'cart quantity updated successfully!';?>">
+                                <div class="collapse row g-3" id="collapseExample<?php echo $row['id'];
+                                                                                    $message[] = 'taikhoan quantity updated successfully!'; ?>">
 
                                     <form method="post" action="">
                                         <input type="hidden" name="update_id" value="<?php echo $row['id']; ?>">

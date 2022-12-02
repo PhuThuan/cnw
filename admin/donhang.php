@@ -7,8 +7,28 @@ if (isset($_SESSION['user'])) {
     $user_id = $_SESSION['user'];
 }
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-
-
+    if (isset($_GET['capnhat'])) {
+       
+        $id=$_GET['capnhat'];
+        $a = $conn->prepare("UPDATE `bill` SET trangthai = 1 WHERE id = ?");
+        $a->execute([$id]);
+       
+        ?><script>
+         window.location = 'donhang.php';
+    </script><?php
+    }
+    if (isset($_GET['delete'])) {
+       
+        $id=$_GET['delete'];
+        $a = $conn->prepare("DELETE from `detailbill` WHERE id_bill = ?");
+        $a->execute([$id]);
+        $a = $conn->prepare("DELETE from `bill` WHERE id = ?");
+        $a->execute([$id]);
+       
+        ?><script>
+         window.location = 'donhang.php';
+    </script><?php
+    }
 
 
 
@@ -44,11 +64,17 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                <thead>
                   <th>ID</th>
                   <th>TÊN</th>
+                  <th>ĐỊA CHỈ</th>
+                  <th>SDT</th>
+                  <th>TRẠNG THÁI</th>
                   <th>TỔNG TIỀN</th>
+                  <th>CHI TIẾT</th>
+                  <th>CẬP NHẬT</th>
+                  <th>XÓA</th>
                </thead>
                
         <?php
-        $sql = 'SELECT bill.id,bill.prices,user_info.name FROM `bill`,`user_info` where bill.user_id=user_info.id ';
+        $sql = 'SELECT bill.id,bill.prices,bill.diachi,bill.sdt,bill.trangthai,user_info.name FROM `bill`,`user_info` where bill.user_id=user_info.id ';
         $cart_query = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $cart_query->execute([]);
         while ($row = $cart_query->fetch()) {
@@ -57,7 +83,19 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 <tr>
                      <td><?php echo $row['id']; ?></td>
                      <td><?php echo $row['name']; ?></td>
+                     <td><?php echo $row['diachi']; ?></td>
+                     <td><?php echo $row['sdt']; ?></td>
+                     <td><?php if($row['trangthai']==0) {
+                        echo("Chưa xử lý");
+                     }
+                     else{
+                        echo("đã xử lý");
+                     } 
+                     ?></td>
                      <td><?php echo $row['prices']; ?></td>
+                     <td><a href="donhang-chitiet.php?id=<?php echo $row['id']; ?>" class="delete-btn">Chi tiết</a></td>
+                     <td><a href="donhang.php?capnhat=<?php echo $row['id']; ?>" name="capnhat"class="delete-btn" >Cập nhật trạng thái</a></td>
+                     <td><a href="donhang.php?delete=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('remove item from cart?');">Xóa</a></td>
 </tr>
 
 

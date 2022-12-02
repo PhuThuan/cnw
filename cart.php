@@ -31,7 +31,7 @@ if (isset($_POST['update_cart'])) {
 
 
 
-if (isset($_POST['thanhtoan'])) {
+if (isset($_POST['thanhtoan']) && $_POST['diachi']!=''  && $_POST['sdt']!='') {
    $card_id=0;
    $sql = 'SELECT id FROM cart WHERE user_id = :id';
    $cart_query = $conn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
@@ -39,10 +39,15 @@ if (isset($_POST['thanhtoan'])) {
    while ($row = $cart_query->fetch()){
       $card_id=$row['id'];
    }
+   $diachi=$_POST['diachi'];
+   $sdt=$_POST['sdt'];
 
 
+  //$conn->exec("INSERT INTO `bill`(user_id,card_id,`diachi`,SDT, prices) VALUES('$user_id',`$card_id`,`$diachi`,`$sdt` ,'$grand_total')");
+   $bill=$conn->prepare("INSERT INTO `bill`(`user_id`,`diachi`,SDT, prices) VALUES(?,?,?,?)");
+   $bill->execute([$user_id,$diachi,$sdt,$grand_total]);
 
-   $conn->exec("INSERT INTO `bill`(user_id,card_id, prices) VALUES('$user_id',$card_id ,'$grand_total')");
+
    $sql2 = "SELECT Max(id) as ID FROM bill where user_id=$user_id";
    $result2 = $conn->query($sql2);
    while ($rows = $result2->fetchAll(PDO::FETCH_ASSOC)) {
@@ -181,6 +186,8 @@ if($grand_total > 0) {
 
                ?>
                <div class="cart-btn">
+                  <label>Địa chỉ nhận hàng    <input name=diachi> </label><br>
+                  <label>Số điện thoại của bạn<input name=sdt></label><br>
                   <button name="thanhtoan" value="thanhtoan" class="
                   <?php
                   echo ($grand_total > 1) ? '' : 'd-none';

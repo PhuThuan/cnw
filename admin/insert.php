@@ -24,8 +24,8 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
         $hinhanh1 = basename($_FILES['fileToUpload']['name']);
         $hinhanh2 = basename($_FILES['fileToUpload2']['name']);
-        $cart_query = $conn->prepare("INSERT INTO `sanpham` (`id`, `loai`, `noibat`, `name`, `sl`, `price`, `discount`, `image1`, `image2`) values(?,?,?,?,?,?,?,?,?)");
-        $cart_query->execute([$_POST['id1'], $_POST['id2'], $_POST['id3'], $_POST['id4'], $_POST['id5'], $_POST['id6'], $_POST['id7'], $hinhanh2, $hinhanh1]);
+        $cart_query = $conn->prepare("INSERT INTO `sanpham` values(?,?,?,?,?,?,?,?,?,?)");
+        $cart_query->execute(['' ,$_POST['id2'], $_POST['id3'], $_POST['id4'],str_replace(".",".<br>", $_POST['id5']), $_POST['id6'], $_POST['id7'], $_POST['id8'], $hinhanh2, $hinhanh1]);
 
 
 
@@ -33,7 +33,6 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         $target_file = $target_dir . $hinhanh1;
         $target_file2 = $target_dir . $hinhanh2;
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file2)) {
-            echo ("thanhcong");
         }
 
 
@@ -75,13 +74,14 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
         <div class="admin-shopping-cart">
             <form action="insert.php" method="post" enctype="multipart/form-data">
 
-                <p><label> <input type="text" name="id1"></label></p>
+
                 <p><label> <input type="text" name="id2"></label></p>
-                <p><label> <input type="text" name="id3"></label></p>
+                <p><label> <input type="text" name="id3" style="height:100px ; width: 100px;"></label></p>
                 <p><label> <input type="text" name="id4"></label></p>
                 <p><label> <input type="text" name="id5"></label></p>
                 <p><label> <input type="text" name="id6"></label></p>
                 <p><label> <input type="text" name="id7"></label></p>
+                <p><label> <input type="text" name="id8"></label></p>
 
 
                 <p><label> <input type="file" name="fileToUpload2" id="fileToUpload2"></label></p>

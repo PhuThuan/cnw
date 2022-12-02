@@ -57,7 +57,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
       <div class="admin-shopping-cart">
 
-         <h1 class="heading">shopping cart</h1>
+         <h1 class="heading">SẢN PHẨM</h1>
          <a href="insert.php"> <button class="themsp">THÊM SẢN PHẨM</button></a>
 
          <form action="" method="post">
@@ -68,6 +68,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                   <th>LOẠI</th>
                   <th>NỔI BẬT</th>
                   <th>TÊN</th>
+                  <th>NỘI DUNG</th>
                   <th>SỐ LƯỢNG</th>
                   <th>DISCOUNT</th>
                   <th>HÌNH 1</th>
@@ -84,6 +85,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                      <td><?php echo $row['loai']; ?></td>
                      <td><?php echo $row['noibat']; ?></td>
                      <td><?php echo $row['name']; ?></td>
+                     <td><?php echo $row['noidung']; ?></td>
                      <td><?php echo $row['sl']; ?></td>
                      <td><?php echo $row['discount']; ?></td>
                      <td><img src="../img/sanpham/<?php echo $row['image1']; ?>" height="100" alt=""></td>
