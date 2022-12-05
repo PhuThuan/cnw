@@ -26,7 +26,7 @@ if (isset($_POST['update_cart'])) {
    $update_quantity = $_POST['cart_quantity'];
    $update_id = $_POST['cart_id'];
    $conn->exec("UPDATE `cart` SET quantity = '$update_quantity' WHERE id = '$update_id'");
-   $message[] = 'cart quantity updated successfully!';
+   
 }
 
 
@@ -56,7 +56,7 @@ if (isset($_POST['thanhtoan']) && $_POST['diachi']!=''  && $_POST['sdt']!='') {
       }
    }
 
-   $rs = $conn->query("select * from cart");
+   $rs = $conn->query("SELECT * from cart");
    while ($rows = $rs->fetchAll(PDO::FETCH_ASSOC)) {
       foreach ($rows as $item) {
          $name = $item['name'];
@@ -64,7 +64,7 @@ if (isset($_POST['thanhtoan']) && $_POST['diachi']!=''  && $_POST['sdt']!='') {
          $quantity = $item['quantity'];
          $conn->exec("INSERT INTO `detailbill`(name, price, id_bill, quantity) VALUES('$name', '$price', '$idBill', '$quantity')");
       }
-
+     
       $conn->exec("delete from cart where user_id = $user_id ");
       $grand_total =0;
 
@@ -185,9 +185,12 @@ if($grand_total > 0) {
 
 
                ?>
-               <div class="cart-btn">
-                  <label>Địa chỉ nhận hàng    <input name=diachi> </label><br>
-                  <label>Số điện thoại của bạn<input name=sdt></label><br>
+               <div class="cart-btn"><table>
+                  <thead>
+                  <th><label>Địa chỉ nhận hàng    <input name=diachi> </label><br></th>
+                  <th><label>Số điện thoại của bạn<input name=sdt></label><br></th>
+                  </thead>
+                  </table>
                   <button name="thanhtoan" value="thanhtoan" class="
                   <?php
                   echo ($grand_total > 1) ? '' : 'd-none';

@@ -97,23 +97,65 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
             while ($row = $cart_query->fetch()) {
             ?>
                  <form action="update.php?id=<?php echo $row['id']; ?>" method="post" enctype="multipart/form-data">
-
-                 
-                    <p><label><?php echo $row['loai']?><input type="text" name="id2" value="<?php echo $row['loai']?>"></label></p>
-                    <p><label><?php echo $row['noibat']?> <input type="text" name="id3" value="<?php echo $row['noibat']?>"></label></p>
-                    <p><label><?php echo $row['name']?> <input type="text" name="id4" value="<?php echo $row['name']?>"></label></p>
-                    <p><label><?php echo $row['noidung']?> <input type="text" name="id5" value='<?php echo $row['noidung']?>' style="height:100px ; width: 500px;"></label></p>
-                    <p><label><?php echo $row['sl']?> <input type="text" name="id6" value="<?php echo $row['sl']?>"></label></p>
-                    <p><label><?php echo $row['price']?> <input type="text" name="id7" value="<?php echo $row['price']?>"></label></p>
-                    <p><label><?php echo $row['discount']?> <input type="text" name="id8" value="<?php echo $row['discount']?>"></label></p>
-
-
-                    <p><label><?php echo $row['image1']?> <input type="file" name="id9" id="id9" ></label></p>
-                    <p><label><?php echo $row['image2']?> <input type="file" name="id10" id="id10"></label></p>
-                    <p><input type="submit" name="submit" value="submit"></p>
-
+                 <table>
+                 <tr>
+                    <th>LOẠI ÁO</th>
+                    <th> <p><label><?php echo $row['loai']?></label></p></th>
+                    <th><input type="text" name="id2" value="<?php echo $row['loai']?>"></label></p></th>
+                
+                </tr>
+                <tr>
+                    <th>NỔI BẬT</th>
+                    <th> <p><label><?php echo $row['noibat']?></label></p></th>
+                    <th><input type="text" name="id3" value="<?php echo $row['noibat']?>"></label></p></th>
+                
+                </tr>
+                <tr>
+                    <th>TÊN</th>
+                    <th> <p><label><?php echo $row['name']?></label></p></th>
+                    <th><input type="text" name="id4" value="<?php echo $row['name']?>"></label></p></th>
+                
+                </tr> 
+                <tr>
+                    <th>NỘI DUNG</th>
+                    <th> <p><label><?php echo $row['noidung']?></label></p></th>
+                    <th><input type="text" name="id5" value="<?php echo $row['noidung']?>"style="height:100px ; width: 500px;"></label></p></th>
+                
+                </tr>
+                <tr>
+                    <th>SỐ LƯỢNG</th>
+                    <th> <p><label><?php echo $row['sl']?></label></p></th>
+                    <th><input type="text" name="id6" value="<?php echo $row['sl']?>"></label></p></th>
+                
+                </tr>  
+                <tr>
+                    <th>GIÁ TIỀN</th>
+                    <th> <p><label><?php echo $row['price']?></label></p></th>
+                    <th><input type="text" name="id7" value="<?php echo $row['price']?>"></label></p></th>
+                
+                </tr>
+                <tr>
+                    <th>GIẢM GIÁ</th>
+                    <th> <p><label><?php echo $row['discount']?></label></p></th>
+                    <th><input type="text" name="id8" value="<?php echo $row['discount']?>"></label></p></th>
+                
+                </tr>   
+                <tr>
+                    <th>HÌNH ẢNH 1</th>
+                    <th> <p><label><img src="../img/sanpham/<?php echo $row['image1']?>" height="100"></label></p></th>
+                    <th><input type="file" name="id9" id="id9" ></p></th>
+                
+                </tr>  
+                <tr>
+                    <th>HÌNH ẢNH 2</th>
+                    <th> <p><label><img src="../img/sanpham/<?php echo $row['image2']?>" height="100"></label></p></th>
+                    <th><input type="file" name="id10" id="id10" ></p></th>
+                
+                </tr> 
+                <th><p><input type="submit" name="submit" value="submit"></p></th></tr>
+             
                     </form>
-
+                    </table>
                 <?php
             }
 

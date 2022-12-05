@@ -1,9 +1,10 @@
 <?php
 	session_start();
 	require_once 'connect.php';
- 
+ ?>
+ <?php
 	if(ISSET($_POST['register'])){
-		if($_POST['firstname'] != "" || $_POST['username'] != "" || $_POST['password'] != ""){
+		if($_POST['firstname'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['password'] == $_POST['repassword'] ){
 			try{
 				$firstname = $_POST['firstname'];
 				$username = $_POST['username'];
@@ -16,12 +17,13 @@
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			}
-			$_SESSION['message']=array("text"=>"User successfully created.","alert"=>"info");
+			$_SESSION['message']=array("text"=>"","alert"=>"info");
 			$conn = null;
-			header('location:index.php');
+			header('location:login.php');
 		}else{
+			
 			echo "
-				<script>alert('Please fill up the required field!')</script>
+				<script>alert('VUI LÒNG ĐIỀN THÔNG TIN THEO ĐÚNG YÊU CẦU')</script>
 				<script>window.location = 'registration.php'</script>
 			";
 		}

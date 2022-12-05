@@ -40,16 +40,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>EASY</title>
-      <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="../css/index.css">
       <link rel="stylesheet" href="css/admin.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-      <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    </head>
 
    <body>
@@ -62,7 +56,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
          <form action="" method="post">
 
-            <table>
+            <table class="table table-striped">
                <thead>
                   <th>ID</th>
                   <th>LOẠI</th>
