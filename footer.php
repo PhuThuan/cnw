@@ -29,7 +29,6 @@
       <div class="sp">
         <h6>Tài khoản</h6>
         <h6>Chính sách vận chuyển</h6>
-        <h6>Thanh toán online</h6>
         <h6>Chính sách bảo mật thông tin</h6>
         <h6>Chính sách bảo hành</h6>
         <h6>Chính sách khiếu nại</h6>

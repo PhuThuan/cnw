@@ -38,11 +38,14 @@ if (isset($_SESSION['user'])) {
                     $cart_query->execute([ $user_id]);
 
                     while ($row = $cart_query->fetch()) {
-                    ?> <tr>
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['admin']; ?></td>
-                       </tr>
+                    ?><div class="taikhoan">
+                    <table >
+                    <tr><td><label for="name">NAME</label></td><td><input id='name' value=' <?php echo $row['name']; ?>'></td>  </tr>
+                        <tr><td><label for="name">EMAIL CỦA BẠN</label></td><td><input value=' <?php echo $row['email']; ?>'></td>  </tr>
+                        <tr><td><label for="name">MẬT KHẨU</label></td><td><input type='password' value=' <?php echo $row['password']; ?>'></td>  </tr>
+                        <tr><td><label for="name">ĐỊA CHỈ </label></td><td><input value=' <?php echo $row['address']; ?>'></td>  </tr>
+                        <tr><td><label for="name">SỐ ĐIỆN THOẠI</label></td><td><input value=' <?php echo $row['SDT']; ?>'></td>  </tr>
+                    <table>  </div>
                        <?php
                     }
                     ?>

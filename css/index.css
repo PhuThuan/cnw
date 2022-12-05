@@ -267,4 +267,7 @@ margin-top:100px ;
 #style-1::-webkit-scrollbar-thumb {
 	background-color: #000000;
 }
-
+/* tai khoan */
+.taikhoan{
+    padding-top: 100px;
+}

@@ -60,9 +60,20 @@ if (isset($_POST['thanhtoan']) && $_POST['diachi']!=''  && $_POST['sdt']!='') {
    while ($rows = $rs->fetchAll(PDO::FETCH_ASSOC)) {
       foreach ($rows as $item) {
          $name = $item['name'];
+         
          $price = $item['price'];
          $quantity = $item['quantity'];
+        
          $conn->exec("INSERT INTO `detailbill`(name, price, id_bill, quantity) VALUES('$name', '$price', '$idBill', '$quantity')");
+
+         $sl=$conn->prepare("SELECT `sl` from sanpham WHERE `name`=? AND `price`=?");
+         $sl->execute([$item['name'], $item['price']]);
+          foreach ($sl as $a1){
+            $s1=$a1['sl'];
+           $a2=$a1['sl']- $quantity;
+           $sl1=$conn->prepare("UPDATE  sanpham SET `sl`=? WHERE `name`=? AND `price`=?");
+         $sl1->execute([ $a2,$item['name'], $item['price']]);
+          }
       }
      
       $conn->exec("delete from cart where user_id = $user_id ");

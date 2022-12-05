@@ -20,6 +20,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
 
         $hinhanh2 = basename($_FILES['id10']['name']);
         $noidung=$_POST['id5'];
+        $noidung=str_replace("<br>","",$noidung );
         $noidung=str_replace(".",".<br>",$noidung );
 
         if($hinhanh1!="" && $hinhanh2!=""){
@@ -56,12 +57,12 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
     
 ?>
         <script>
-            // window.location = 'adminindex.php';
+            window.location = 'adminindex.php';
         </script>
     <?php
 
     
-}
+            }
 
 
     ?>
@@ -119,7 +120,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
                 <tr>
                     <th>NỘI DUNG</th>
                     <th> <p><label><?php echo $row['noidung']?></label></p></th>
-                    <th><input type="text" name="id5" value="<?php echo $row['noidung']?>"style="height:100px ; width: 500px;"></label></p></th>
+                    <th><input type="text" name="id5" value='<?php echo $row['noidung']?>'style="height:100px ; width: 500px;"></label></p></th>
                 
                 </tr>
                 <tr>
